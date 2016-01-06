@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guahan</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= form_for :word, url: {controller: "words", action: "search"} do |f| %>
+  Input language:
+  <%= f.select(:language, options_from_collection_for_select(Language.all, :id, :name)) %>
+    <%= f.search_field :word %>
+    <%= f.submit "Search"%>
+  <% end %>
+  <ul class="letters">
+    <% @alphabet.each do |letter| %>
+      <li><%= link_to letter.letter, alphabet_path(letter) %></li>
+    <% end %>
+  </ul>
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  written: MyText
+  vocal: MyString
+  user_id: 
+
+two:
+  references: 
+  written: MyText
+  vocal: MyString
+  user_id: 

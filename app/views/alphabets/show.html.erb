@@ -1,0 +1,28 @@
+
+<h1><%= @letter.letter %></h1>
+<% row = 1 %>
+<% @words.each do |word| %>
+  <% if row % 2 != 0 %>
+    <div class="gray">
+  <% else %>
+    <div class="white">
+  <% end %>
+  <p>
+
+  <strong><%= link_to word.spelling, word_path(word, page: params[:page])  %></strong>
+  </p>
+  <% count = 1 %>
+  <% word.definitions.each do |definition| %>
+    <p>
+      <%= count %>. <%= definition.explaination %>
+    </p>
+    <% count += 1 %>
+  <% end %>
+  <% row += 1 %>
+</div>
+<% end %>
+
+
+
+
+<%= will_paginate @words %>

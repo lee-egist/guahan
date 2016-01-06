@@ -1,0 +1,25 @@
+// Place all the styles related to the Alphabets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+  padding: .5em;
+}
+.gray{
+  background-color: rgb(210, 218, 222);
+  padding-top: .25em;
+  padding-bottom:  .25em;
+  p{
+    padding-left: .5em;
+  }
+}
+
+.white{
+  background-color: white;
+  padding-top:  .25em;
+  padding-bottom:  .25em;
+  p{
+    padding-left:  .5em;
+  }
+}

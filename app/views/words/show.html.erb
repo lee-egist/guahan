@@ -1,0 +1,28 @@
+
+<p>
+  <%= link_to "Back", alphabet_path(@myword.alphabet_id, page: params[:page]) %>
+</p>
+<div class="">
+
+<h2><%= @myword.spelling %></h2>
+<% count = 1 %>
+<strong>Origin :</strong><br>
+<strong>Defintions :</strong>
+<% @definitions.each do |definition| %>
+<p>
+  <%= count %>. <%= definition.explaination %>
+
+</p>
+<% count += 1 %>
+<% end %>
+<p>
+  <% @myword.images.each do |image| %>
+  <%= image_tag(image.image_url(:thumb).to_s) %>
+  <% end %>
+</p>
+<p>
+  <%= link_to "+ definition", new_word_definition_path(@myword) %> |
+  <%= link_to "+ image", new_word_image_path(@myword) %> |
+  <%= link_to "+ origin", new_word_origin_path(@myword) %>
+</p>
+</div>

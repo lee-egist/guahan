@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alphabet_id: 
+  spelling: MyString
+  user_id: 
+
+two:
+  alphabet_id: 
+  spelling: MyString
+  user_id: 

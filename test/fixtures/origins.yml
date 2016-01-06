@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word_id: 
+  story: MyText
+  endorsements: 
+  user_id: 
+
+two:
+  word_id: 
+  story: MyText
+  endorsements: 
+  user_id: 

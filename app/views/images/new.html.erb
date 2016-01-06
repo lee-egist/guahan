@@ -1,0 +1,6 @@
+<h1><%= @myword.spelling %></h1>
+<%= form_for :image, url: {action: 'create'} do |f| %>
+  <%# render "shared/errors", object: :image %>
+  <%= f.file_field :image, class: "form-control" %>
+  <%= f.submit %>
+<% end %>
