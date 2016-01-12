@@ -25,6 +25,13 @@
       <% end %>
     <% end %>
   </ul>
+  <% optiondata = [] %>
+  <% @alphabet.each do |letter| %>
+      <% optiondata << [letter.letter, letter.id] %>
+  <% end %>
+  <div class="letterSelect">
+    <%= select_tag(:letter, options_for_select(optiondata)) %>
+  </div>
 </div>
 <%= yield %>
 <%= render 'footer' %>

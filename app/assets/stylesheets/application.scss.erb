@@ -14,13 +14,17 @@
  *= require_self
  */
 
+.letterSelect{
+  display: none;
+}
 
  @font-face {
   font-family: 'london';
   font-weight: lighter;
   font-style: normal;
-  src: font_url('OldLondon.ttf') format('truetype');
+  src: font_url('EnglishTowne.ttf') format('truetype');
 }
+
 
 html{
   -webkit-box-sizing: border-box;
@@ -46,6 +50,8 @@ body{
   box-shadow: 0px 2px 2px rgb(0, 0, 0);
 
 }
+
+
 .nav h1{
   margin-top: 0px;
   font-size: 3em;
@@ -79,4 +85,14 @@ p{
 .navlinks a:hover{
   color: white;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 480px){
+  .letters{
+    padding-left: 0px;
+    display: none;
+  }
+  .letterSelect{
+    display: block;
+  }
 }

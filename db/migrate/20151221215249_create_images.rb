@@ -3,7 +3,7 @@
     create_table :images do |t|
       t.references :word, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
-      t.string :image
+      t.string :image_url
 
       t.timestamps null: false
     end
