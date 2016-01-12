@@ -1,28 +1,58 @@
+<div class="main">
 
-<p>
-  <%= link_to "Back", alphabet_path(@myword.alphabet_id, page: params[:page]) %>
-</p>
-<div class="">
+  <div class="">
 
-<h2><%= @myword.spelling %></h2>
-<% count = 1 %>
-<strong>Origin :</strong><br>
-<strong>Defintions :</strong>
-<% @definitions.each do |definition| %>
-<p>
-  <%= count %>. <%= definition.explaination %>
+  <h1><%= @myword.spelling %></h1>
+  <% count = 1 %>
+  <strong>Origin :</strong><br>
+  <strong>Defintions :</strong>
+  <% @definitions.each do |definition| %>
+  <p>
+    <%= count %>. <%= definition.explaination %>
 
-</p>
-<% count += 1 %>
-<% end %>
-<p>
-  <% @myword.images.each do |image| %>
-  <%= image_tag(image.image_url(:thumb).to_s) %>
+  </p>
+  <% count += 1 %>
   <% end %>
-</p>
-<p>
-  <%= link_to "+ definition", new_word_definition_path(@myword) %> |
-  <%= link_to "+ image", new_word_image_path(@myword) %> |
-  <%= link_to "+ origin", new_word_origin_path(@myword) %>
-</p>
+  <p>
+    <% @myword.images.each do |image| %>
+    <%= image_tag(image.image_url(:thumb).to_s) %>
+    <% end %>
+  </p>
+  <p><strong>
+    <a href="#definition" class="addlink">+ definition</a> |
+    <a href="#image" class="addlink">+ image</a> |
+    <%= link_to "+ origin", new_word_origin_path(@myword), class: "addlink" %>
+  </strong></p>
+  </div>
+
+  <div id="definition" class="modalDialog">
+  	<div>
+  		<a href="#close" title="Close" class="close">X</a>
+      <%= form_for :definition, url: word_definitions_path(@myword) do |f| %>
+        <%# render "shared/errors", object: @definition %>
+        <%= f.text_field :explaination, class: "form-control" %>
+        <%= f.submit %>
+      <% end %>
+  	</div>
+  </div>
+  <div id="image" class="modalDialog">
+  	<div>
+  		<a href="#close" title="Close" class="close">X</a>
+      <%= form_for :image, url: word_images_path(@myword) do |f| %>
+        <%# render "shared/errors", object: :image %>
+        <%= f.file_field :image, class: "form-control" %>
+        <%= f.submit %>
+      <% end %>
+  	</div>
+  </div>
+  <div id="origin" class="modalDialog">
+  	<div>
+  		<a href="#close" title="Close" class="close">X</a>
+      <%= form_for :image, url: word_images_path(@myword) do |f| %>
+        <%# render "shared/errors", object: :image %>
+        <%= f.file_field :image, class: "form-control" %>
+        <%= f.submit %>
+      <% end %>
+  	</div>
+  </div>
 </div>

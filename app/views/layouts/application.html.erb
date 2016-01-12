@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="nav">
+
+  <h1>Guahan Dictionary</h1>
   <%= form_for :word, url: {controller: "words", action: "search"} do |f| %>
   Input language:
   <%= f.select(:language, options_from_collection_for_select(Language.all, :id, :name)) %>
@@ -15,9 +18,14 @@
   <% end %>
   <ul class="letters">
     <% @alphabet.each do |letter| %>
-      <li><%= link_to letter.letter, alphabet_path(letter) %></li>
+      <% if params[:id] && params[:id] == letter.id.to_s %>
+        <li><strong class="navlinks active"><%= letter.letter %></strong></li>
+      <% else %>
+        <li><strong class="navlinks"><%= link_to letter.letter, alphabet_path(letter), hreflang: "en" %></strong></li>
+      <% end %>
     <% end %>
   </ul>
+</div>
 <%= yield %>
 
 </body>

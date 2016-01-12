@@ -1,17 +1,7 @@
+<div class="main">
 
-<%# form_for :word, url: {controller: "words", action: "search"} do |f| %>
-<!-- Input language: -->
-<%# f.select(:language,options_from_collection_for_select(Language.all, :id, :name)) %>
-  <%# f.search_field :word %>
-  <%# f.submit "Search"%>
-<%# end %>
-<!-- <ul class="letters"> -->
-  <%# @alphabet.each do |letter| %>
-    <!-- <li><%# link_to letter.letter, alphabet_path(letter) %></li> -->
-  <%# end %>
-<!-- </ul> -->
 <% @words.each do |word| %>
-  <strong><%= link_to word.spelling, word_path(word)  %></strong>
+  <strong class="word"><%= link_to word.spelling, word_path(word), hreflang: "en", rel: "help"  %></strong>
   <% word.definitions.each do |definition| %>
     <p>
       <%= definition.explaination %>
@@ -19,3 +9,4 @@
   <% end %>
   <hr>
 <% end %>
+</div>
