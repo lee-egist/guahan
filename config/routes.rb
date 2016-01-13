@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
 
+  get 'admin/login', to: "sessions#new", as: 'admin_login'
+
+  post 'sessions/create', to: "sessions#create", as: 'login'
+  get 'sessions/destroy', to: "sessions#destroy", as: 'logout'
+  get 'home/index', as: 'home'
+  post 'words/search'
+
   namespace :api do
     namespace :v1 do
-      get 'home/index', to: 'home#index' 
+      get 'home/index', to: 'home#index'
     end
   end
 
@@ -14,8 +21,6 @@ Rails.application.routes.draw do
     resources :images, except: [:index]
     resources :origins, except: [:index]
   end
-  post 'words/search'
-  get 'home/index', as: 'home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

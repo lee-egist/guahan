@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 20151223190159) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "definitions", force: :cascade do |t|
-    t.integer  "user_id",      default: 1
+    t.integer  "user_id",     default: 1
     t.integer  "word_id"
-    t.text     "explaination"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "explanation"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "definitions", ["user_id"], name: "index_definitions_on_user_id", using: :btree
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20151223190159) do
   create_table "images", force: :cascade do |t|
     t.integer  "word_id"
     t.integer  "user_id"
-    t.string   "image"
+    t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
