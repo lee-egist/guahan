@@ -1,31 +1,20 @@
 class ImagesController < ApplicationController
-  def index
-  end
 
-  def show
-  end
 
   def new
-    @myword = Word.find(params[:word_id])
+    @myword = word
   end
 
   def create
-    p params
     user = User.first
-    word = Word.find(params[:word_id])
-    image = Image.create(user_id: user.id, word_id: word.id, image: params[:image][:image])
+    image_path = params[:image][:image]
+    image = Image.create(user_id: user.id, word_id: word.id, image_url: image_path)
+
     if image.save
     word.images << image
     redirect_to word_path(word)
     end
+
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end
