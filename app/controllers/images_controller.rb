@@ -6,15 +6,27 @@ class ImagesController < ApplicationController
   end
 
   def create
+    p params
+    s3 = Aws::S3::Resource.new(
+    credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+    )
+
     user = User.first
-    image_path = params[:image][:image]
-    image = Image.create(user_id: user.id, word_id: word.id, image_url: image_path)
+    file = params[:image][:image]
+    obj = s3.bucket('eg84-projects').object(file.original_filename)
+    obj.upload_file(file.tempfile, acl:'public-read')
 
+    # create an object for the image
+    image = Image.create(user_id: user.id, word_id: word.id, image_url: obj.public_url)
+
+    # save the image
     if image.save
-    word.images << image
-    redirect_to word_path(word)
+      word.images << image
+      redirect_to word_path(word), success: 'File successfully uploaded'
+    else
+      flash.now[:notice] = 'There was an error'
+      render :new
     end
-
   end
 
 end

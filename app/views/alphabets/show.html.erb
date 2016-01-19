@@ -15,7 +15,7 @@
   <% count = 1 %>
   <% word.definitions.order(created_at: 'asc').limit(3).each do |definition| %>
     <p>
-      <%= count %>. <%= definition.explaination %>
+      <%= count %>. <%= definition.explanation %>
     </p>
     <% count += 1 %>
   <% end %>
