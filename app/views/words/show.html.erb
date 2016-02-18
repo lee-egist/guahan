@@ -5,7 +5,15 @@
   <h1><%= @myword.spelling %></h1>
   <% count = 1 %>
   <strong>Origin :</strong><br>
-  <strong>Defintions :</strong>
+  <% @origins.each do |origin| %>
+  <p>
+    <%= count %>. <%= origin.story %>
+
+  </p>
+  <% count += 1 %>
+  <% end %>
+  <p>
+  <strong>Defintions :</strong><br>
   <% @definitions.each do |definition| %>
   <p>
     <%= count %>. <%= definition.explanation %>

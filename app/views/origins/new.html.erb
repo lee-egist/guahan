@@ -1,2 +1,9 @@
-<h1>Origins#new</h1>
-<p>Find me in app/views/origins/new.html.erb</p>
+<div class="main">
+
+<h1><%= @myword.spelling %></h1>
+<%= form_for :origin, url: {action: 'create'} do |f| %>
+  <%# render "shared/errors", object: :origin %>
+  <%= f.text_area :story, class: "form-control", cols: 80, rows: 20 %><br>
+  <%= f.submit %>
+<% end %>
+</div>
