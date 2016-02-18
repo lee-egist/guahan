@@ -13,21 +13,11 @@ class WordsController < ApplicationController
   end
 
   def search
-    @query = Word.where(id: words)
+    @search_word = params[:word][:search_word]
+    @query = Word.where(id: words).paginate(page: params[:page], per_page: 40).order(created_at: 'ASC')
   end
 
   private
-
-    def records
-      query = params[:word][:word]
-
-      case params[:word][:language]
-        when "1"
-          records = Definition.where("explaination like ?", "%#{query}%")
-        when "2"
-          records = Word.where("spelling like ?", "%#{query}%")
-      end
-    end
 
     def words
       word_ids = []
@@ -35,4 +25,16 @@ class WordsController < ApplicationController
         word_ids << record.id
       end
     end
+
+    def records
+      query = params[:word][:search_word]
+
+      case params[:word][:language]
+        when "1"
+          records = Definition.where("explanation like ?", "%#{query}%")
+        when "2"
+          records = Word.where("spelling like ?", "%#{query}%")
+      end
+    end
+
 end

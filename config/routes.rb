@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   get 'home/index', as: 'home'
   post 'words/search'
+  get 'words/search', to: 'words#search'
   get 'user/index'
 
   resources :alphabets, only: [:show]
-
 
   resources :words do
     resources :definitions, except: [:index]

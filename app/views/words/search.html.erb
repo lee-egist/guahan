@@ -1,14 +1,24 @@
-<h1>Search Results</h1>
-<% @query.each do |result| %>
-<p>
-  <strong><%= result.spelling %></strong>
-</p>
-<% result.definitions.each do |definition| %>
+<div class="results">
+<h1 >Search results for:  <%= @search_word %></h1>
+</div>
+<div class="white">
+<% @query.each do |word| %>
   <p>
-    <%= definition.explaination %>
+  <strong class="word"><%= link_to word.spelling, word_path(word, page: params[:page]),hreflang: "en", rel: "help"   %></strong>
   </p>
+  <% count = 1 %>
+  <% word.definitions.order(created_at: 'asc').limit(3).each do |definition| %>
+    <p>
+      <%= count %>. <%= definition.explanation %>
+    </p>
+  <% end %>
+  <hr>
 <% end %>
-
-<% end %>
-
-<%# will_paginate @query %>
+</div>
+<div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @query %>
+    </div>
+    <%= will_paginate @query, :container => false %>
+  </div>
+</div>
