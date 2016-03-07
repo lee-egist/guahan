@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guahan</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'nav' %>
+<div class="white">
+<% results.each do |result| %>
+  <p>
+    <strong class="word">
+      <%= link_to result.spelling, word_path(result, page: params[:page]) %>
+    </strong>
+  </p>
+  <% count = 1 %>
+  <% result.definitions.order(created_at: 'asc').limit(3).each do |definition| %>
+    <p>
+      <%= count %>. <%= definition.explanation %>
+    </p>
+  <% end %>
+  <hr>
+<% end %>
+</div>
+<div class="lower">
+  <div class="apple_pagination">
+      <div class="page_info">
+        <%= page_entries_info results %>
+      </div>
+      <%= will_paginate results, :container => false %>
+    </div>
+</div>
+<%= render 'footer' %>
+</body>
+</html>

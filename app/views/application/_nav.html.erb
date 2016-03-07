@@ -1,7 +1,7 @@
 <div class="nav">
   <h1>Guahan Dictionary</h1>
 
-<%= form_for :word, url: { controller: "words", action: "search" }, method: 'get' do |f| %>
+<%= form_for :search, url: { controller: "word/search", action: "create" } do |f| %>
 Input language:
 <%= f.select(:language, options_from_collection_for_select(Language.all, :id, :name)) %>
   <%= f.search_field :search_word %>

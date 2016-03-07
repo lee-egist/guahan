@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
 
-  get 'login', to: "sessions#new", as: 'user_login'
-  post 'login', to: "sessions#create", as: 'logged_in'
-  get 'sessions/destroy', to: "sessions#destroy", as: 'logout'
+  scope "(:locale)", locale: /en/ do
+    get 'login', to: "sessions#new", as: 'user_login'
+    post 'login', to: "sessions#create", as: 'logged_in'
+    get 'sessions/destroy', to: "sessions#destroy", as: 'logout'
 
-  get 'home/index', as: 'home'
-  post 'words/search'
-  get 'words/search', to: 'words#search'
-  get 'user/index'
+    get 'home/index', as: 'home'
+    get 'user/index'
 
-  resources :alphabets, only: [:show]
+    resources :alphabets, only: [:show]
+    namespace :word do
+      resources :search
+    end
+    resources :words do
+      resources :definitions, except: [:index]
+      resources :images, except: [:index]
+      resources :origins, except: [:index]
+    end
 
-  resources :words do
-    resources :definitions, except: [:index]
-    resources :images, except: [:index]
-    resources :origins, except: [:index]
-  end
-
-  namespace :api do
-    namespace :v1 do
-      get 'home/index', to: 'home#index'
+    namespace :api do
+      namespace :v1 do
+        get 'home/index', to: 'home#index'
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
