@@ -3,17 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.addlink{
-	font-size: 1.25em;
-	color: rgb(0, 0, 238);
-}
-.addlink:hover{
-	color: black;
+// .addlink{
+// 	color: rgb(0, 0, 238);
+// }
+// .addlink:hover{
+// 	color: black;
+// }
+//
+.word-desc{
+    text-align: left;
 }
 
 .modalDialog {
 	position: fixed;
-	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
 	right: 0;
 	bottom: 0;

@@ -14,19 +14,60 @@
  *= require_self
  */
 
-.letterSelect{
-  display: none;
+// #fbf0ee - light
+// #e9a29b - light - medium
+// #c0392b - medium
+// #092816 - dark
+
+// To achieve the text-on-image effects I showed you before, you can use CSS for your websites. Here is example CSS code for some of the effects. Please change it according to your needs.
+//
+//
+//
+// Overlay the image
+//
+// .darken {
+//
+// background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(YOUR IMAGE HERE);
+//
+// }
+//
+// Example: http://jsfiddle.net/drpak8vy/1/
+//
+//
+//
+// Put text in a box
+//
+// .text-box {
+//
+// background-color: rgba(0, 0, 0, 0.5);
+//
+// color: #fff;
+//
+// display: inline;
+//
+// padding: 10px;
+//
+// }
+//
+// Example: http://jsfiddle.net/qg83m36p/
+//
+//
+//
+// Floor fade
+//
+// .floor-fade {
+//
+// background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6) ), url(YOUR IMAGE HERE);
+//
+// }
+//
+// Example: http://jsfiddle.net/gRzPF/409/
+//
+@font-face {
+  font-family: 'slabo';
+  src: asset-url("Slabo-Regular.ttf")
 }
-
- @font-face {
-  font-family: 'london';
-  font-weight: lighter;
-  font-style: normal;
-  src: font_url('EnglishTowne.ttf') format('truetype');
-}
-
-
-html{
+html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -36,68 +77,62 @@ html{
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
-
-body{
-  margin: 0px;
+p, a, body{
+  font-family: 'slabo';
 }
-
-.nav{
-  margin: auto;
-  text-align: center;
-  background-color: rgb(195, 6, 6);
-  padding-top: 1em;
-  padding-bottom: .25em;
-  box-shadow: 0px 2px 2px rgb(0, 0, 0);
-
-}
-
-
-.nav h1{
-  margin-top: 0px;
-  font-size: 3em;
-  font-family: 'london';
-
-}
-
-.navlinks{
-  font-size: 1.5em;
-}
-.active{
-  color: red;
-  text-decoration: underline;
-}
-
-p{
-  font-family: sans-serif;;
-}
-
-
 .main{
-  margin: 1em;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding:2em;
 }
-
-
-.navlinks a{
-  color: inherit;
+.banner{
+  padding-left: 3em;
+  padding-right: 3em;
+  text-align: center;
 }
-.navlinks a:hover{
-  color: white;
-  text-decoration: underline;
+.heading{
+  color: #092816;
 }
+.title{
 
+}
+.root{
+  float: left;
+  text-align: left;
+}
+.nav{
+ .links{
+   list-style-type: none;
+   li{
+     padding-top: .5em;
+     display: inline-block;
+     background-color: #fbf0ee;
+     border-radius: 50%;
+     width:35px;
+     height: 35px;
+
+     a{
+       vertical-align: middle;
+       color: #c0392b;
+     }
+   }
+ }
+ select{
+   color: #c0392b;
+ }
+}
+.content{
+  margin:auto;
+  padding-top: 1.5em;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-bottom: 3em;
+  text-align: center;
+  .word a{
+    color: #c0392b;
+  }
+}
 
 footer{
-  background-color: rgba(#949093, 0.75);
-  text-align:center;
-}
-@media screen and (max-width: 480px){
-  .letters{
-    padding-left: 0px;
-    display: none;
-  }
-  .letterSelect{
-    display: block;
-  }
+  clear: both;
+  margin: auto;
+  text-align: center;
 }

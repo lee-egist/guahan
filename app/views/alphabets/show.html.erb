@@ -1,5 +1,6 @@
-<div class="main">
-  <div class="white">
+<div>
+
+  <div class="word-list">
   <% @words.each do |word| %>
     <p>
       <strong class="word">
@@ -15,6 +16,7 @@
     <hr>
   <% end %>
   </div>
+
   <div class="lower">
     <div class="apple_pagination">
         <div class="page_info">
@@ -23,4 +25,5 @@
         <%= will_paginate @words, :container => false %>
       </div>
   </div>
+
 </div>

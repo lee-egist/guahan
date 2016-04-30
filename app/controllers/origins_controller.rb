@@ -6,7 +6,6 @@ class OriginsController < ApplicationController
   end
 
   def create
-    p params
     user = User.all.first
     word = Word.find(params[:word_id])
     story = params[:origin][:story]
@@ -14,9 +13,9 @@ class OriginsController < ApplicationController
     new_origin = Origin.create(user: user, word: word, story: story)
 
     if new_origin.save
-      redirect_to word_path(word)
+      redirect_to word
     else
-      render new
+      render 'new'
     end
   end
 

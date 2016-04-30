@@ -1,10 +1,14 @@
 <div class="main">
-
-<%= form_for :user, url: logged_in_path do |f| %>
+<span class="flash">
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+</span>
+<%= form_for @session, url: logged_in_path do |f| %>
   <%# render "shared/errors", object: :user %>
   <%= f.text_field :handle, class: "form-control", placeholder: "username" %><br>
   <%= f.password_field :password, class: "form-control", placeholder: "password" %><br>
-  <%= f.submit %>
+  <%= f.submit "Login" %>
 
 <% end %>
 </div>

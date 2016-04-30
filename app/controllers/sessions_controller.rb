@@ -1,21 +1,25 @@
 class SessionsController < ApplicationController
   def new
+    @session = User.new
   end
 
   def create
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to user_index_path
+      redirect_to root_path
     else
+      flash.now[:notice] = "Unable to log in user"
+      @session = User.new
       render 'new'
     end
-
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_path
+    if session[:user_id]
+      session[:user_id] = nil
+      redirect_to root_path
+    end
   end
 
   def user

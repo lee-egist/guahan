@@ -1,8 +1,5 @@
 class Word::SearchController < ApplicationController
 
-
-
-
   def create
     search = params[:search][:search_word]
     query = Word.where(id: words).paginate(page: params[:page], per_page: 40).order(created_at: 'ASC')

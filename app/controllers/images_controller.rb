@@ -2,22 +2,21 @@ class ImagesController < ApplicationController
 
 
   def new
-    @myword = word
+    @image = Image.new
   end
 
   def create
-    p params
     s3 = Aws::S3::Resource.new(
     credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
     )
 
     user = User.first
     file = params[:image][:image]
-    obj = s3.bucket('eg84-projects').object(file.original_filename)
-    obj.upload_file(file.tempfile, acl:'public-read')
+    mybucket = s3.bucket('eg84-projects').object(file.original_filename)
+    mybucket.upload_file(file.tempfile, acl:'public-read')
 
     # create an object for the image
-    image = Image.create(user_id: user.id, word_id: word.id, image_url: obj.public_url)
+    image = Image.create(user_id: user.id, word_id: word.id, image_url: mybucket.public_url)
 
     # save the image
     if image.save
@@ -28,5 +27,7 @@ class ImagesController < ApplicationController
       render :new
     end
   end
+
+  private
 
 end

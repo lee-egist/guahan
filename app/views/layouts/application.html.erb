@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'nav' %>
-<%= yield %>
-<%= render 'footer' %>
+  <div class="main">
+
+  <% if request.path == "/" %>
+    <%= render 'home_nav' %>
+  <% else %>
+    <%= render 'nav' %>
+  <% end %>
+  <div class="content">
+    <%= yield %>
+  </div>
+  <%= render 'footer' %>
+</div>
 </body>
 </html>

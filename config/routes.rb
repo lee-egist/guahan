@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'sessions/destroy', to: "sessions#destroy", as: 'logout'
 
     get 'home/index', as: 'home'
+    get 'home/legal'
     get 'user/index'
 
     resources :alphabets, only: [:show]

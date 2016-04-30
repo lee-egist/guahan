@@ -19,6 +19,4 @@ class DefinitionsController < ApplicationController
   end
 
 
-  private
-
 end

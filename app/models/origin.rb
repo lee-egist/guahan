@@ -1,4 +1,5 @@
 class Origin < ActiveRecord::Base
+
   belongs_to :word
   belongs_to :user
   has_many :comments, dependent: :destroy

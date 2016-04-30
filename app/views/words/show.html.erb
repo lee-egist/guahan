@@ -1,48 +1,45 @@
-<div class="main">
+<div class="word-desc">
 
   <div class="">
 
-  <h1><%= @myword.spelling %></h1>
-  <% o_count = g_count = 1 %>
-  <strong>
-    <% if @origins.length > 1 %>
-    <%= p 'Origin'.pluralize %>
-    <% else %>
-    <%= p 'Origin' %>
-    <% end %>
-     :</strong><br>
-  <% @origins.each do |origin| %>
-  <p>
-    <%= o_count %>. <%= origin.story %>
+    <h1><%= @myword.spelling %></h1>
+    <% o_count = g_count = 1 %>
+    <strong>
+      <% if @origins.length > 1 %>
+        <%= p 'Origin'.pluralize %>
+      <% else %>
+        <%= p 'Origin' %>
+      <% end %>
+       :</strong><br>
 
-  </p>
-  <% o_count += 1 %>
-  <% end %>
-  <p>
-  <strong>
-    <% if @definitions.length > 1 %>
-      <%= p 'Definition'.pluralize %>
-    <% else %>
-    <%= p 'Definition' %>
-    <% end %>
-    :</strong><br>
-  <% @definitions.each do |definition| %>
-  <p>
-    <%= g_count %>. <%= definition.explanation %>
-
-  </p>
-  <% g_count += 1 %>
-  <% end %>
-  <p>
-    <% @myword.images.each do |image| %>
-    <%= image_tag(image.image_url, width: "200px") %>
-    <% end %>
-  </p>
-  <p><strong>
-    <a href="#definition" class="addlink">+ definition</a> |
-    <a href="#image" class="addlink">+ image</a> |
-    <%= link_to "+ origin", new_word_origin_path(@myword), class: "addlink" %>
-  </strong></p>
+      <% @origins.each do |origin| %>
+      <p><%= o_count %>. <%= origin.story %></p>
+      <% o_count += 1 %>
+      <% end %>
+    <p>
+    <strong>
+      <% if @definitions.length > 1 %>
+        <%= p 'Definition'.pluralize %>
+      <% else %>
+        <%= p 'Definition' %>
+      <% end %>
+      :</strong><br>
+      <% @definitions.each do |definition| %>
+        <p><%= g_count %>. <%= definition.explanation %></p>
+        <% g_count += 1 %>
+      <% end %>
+    <p>
+      <% @myword.images.each do |image| %>
+        <%= image_tag(image.image_url, width: "200px") %>
+      <% end %>
+    </p>
+    <p>
+      <strong>
+        <a href="#definition" class="addlink">+ definition</a> |
+        <a href="#image" class="addlink">+ image</a> |
+        <%= link_to "+ origin", new_word_origin_path(@myword), class: "addlink" %>
+      </strong>
+    </p>
   </div>
 
   <div id="definition" class="modalDialog">

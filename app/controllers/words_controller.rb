@@ -7,6 +7,8 @@ class WordsController < ApplicationController
     @origins = @myword.origins
   end
 
+  def new
+  end
   private
 
 end

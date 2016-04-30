@@ -1,4 +1,5 @@
 class Word < ActiveRecord::Base
+
   belongs_to :alphabet
   belongs_to :user
 

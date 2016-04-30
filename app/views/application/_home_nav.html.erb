@@ -1,13 +1,16 @@
 <div class="banner">
-  <div class="root">
-    <%= link_to "Home", root_path %> |
-    <% if session[:user_id] %>
-      <%= link_to "Logout", logout_path %> | <%= link_to "+ Word", new_word_path %>
-    <% else %>
-    <%= link_to "Login", user_login_path %>
-    <% end %>
+  <div class="heading">
+    <h1 class="title">Guahan Dictionary</h1>
   </div>
+
   <div class="nav">
+    <div class="root">
+      <% if session[:user_id] %>
+        <%= link_to "Logout", logout_path %> | <%= link_to "+ Word", new_word_path %>
+      <% else %>
+      <%= link_to "Login", user_login_path %>
+      <% end %>
+    </div>
     <%= form_for :search, url: { controller: "word/search", action: "create" } do |f| %>
     Input language:
     <%= f.select(:language, options_from_collection_for_select(Language.all, :id, :name)) %>
@@ -25,5 +28,4 @@
     </ul>
 
   </div>
-
 </div>
