@@ -8,7 +8,7 @@
 
 User.create(handle: "me", email: "admin@thissite.com", password: "just2easy4you")
 
-User.create(handle: "mimi" email: "mblas7@yahoo.com", password: "quarterback")
+User.create(handle: "mimi", email: "mblas7@yahoo.com", password: "quarterback")
 
 require_relative "languages"
 require_relative "alphabet"
