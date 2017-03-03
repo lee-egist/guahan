@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :definitions, except: [:index]
       resources :images, except: [:index]
       resources :origins, except: [:index]
+      resources :pronounciations, except: [:index]
     end
 
     namespace :api do
