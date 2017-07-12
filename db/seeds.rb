@@ -21,6 +21,6 @@ json["results"]["collection1"].each do |obj|
   new_word = Word.create(alphabet_id: letter_id , spelling: obj["word"]["text"].to_s, user_id: 1)
    if new_word.save
      Definition.create(user_id: 1, word_id: new_word.id, explanation: obj["definition"])
-     Pronounciation.create(user_id: 1, word_id: new_word.id, phonetic: obj["pronouncation"])
+     Pronounciation.create(user_id: 1, word_id: new_word.id, phonetic: obj["pronounciation"])
    end
 end
