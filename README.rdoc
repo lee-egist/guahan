@@ -22,7 +22,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* Known Issues
+== Known Issues
 
  - Pronounciation
 The + pronounciation link is NOT COMPLETE. any attempts to access it will crash the application **last updated: 7/12/17
