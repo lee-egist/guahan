@@ -3,6 +3,10 @@
   <div class="">
 
     <h1><%= @myword.spelling %></h1>
+      <strong> <% @myword.pronounciations.each do |pronunce| %>
+        <em style="pronounce"><%= pronunce.phonetic %></em>
+      <% end %>
+    </strong><br><br>
     <% o_count = g_count = 1 %>
     <strong>
       <% if @origins.length > 1 %>
