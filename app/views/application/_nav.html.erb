@@ -2,7 +2,7 @@
   <div class="root">
     <%= link_to "Home", root_path %> |
     <% if session[:user_id] %>
-      <%= link_to "Logout", logout_path %> | <%= link_to "+ Word", new_word_path %>
+      <%= link_to "Logout", logout_path %> | <%= link_to "+ Word", new_word_path(user_id: @user) %>
     <% else %>
     <%= link_to "Login", user_login_path %>
     <% end %>

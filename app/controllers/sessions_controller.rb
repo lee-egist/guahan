@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to root_path(user_id: user.id)
     else
       flash.now[:notice] = "Unable to log in user"
       @session = User.new
