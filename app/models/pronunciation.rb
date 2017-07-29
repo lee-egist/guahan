@@ -1,4 +1,4 @@
-class Pronounciation < ActiveRecord::Base
+class Pronunciation < ActiveRecord::Base
 
   belongs_to :word
 

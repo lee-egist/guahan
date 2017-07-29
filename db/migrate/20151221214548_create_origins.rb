@@ -5,6 +5,7 @@ class CreateOrigins < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true, default: 1
       t.text :story
       t.integer :endorsements, default: 0
+      t.integer :verified, default: 0
 
       t.timestamps null: false
     end

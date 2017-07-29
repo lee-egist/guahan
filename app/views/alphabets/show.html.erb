@@ -5,10 +5,13 @@
     <p>
       <strong class="word">
         <%= link_to word.spelling, word_path(word, page: params[:page]),hreflang: "en", rel: "help"   %>
-      </strong> - <%= word.pronounciations.last.phonetic %>
+      </strong> - <% pronunciations = word.pronunciations.where(verified: 1) %>
+      <% if pronunciations.length > 0 %>
+      <%= pronunciations.last.phonetic %>
+      <% end %>
     </p>
     <% count = 1 %>
-    <% word.definitions.order(created_at: 'asc').limit(3).each do |definition| %>
+    <% word.definitions.where(verified: 1).order(created_at: 'asc').limit(3).each do |definition| %>
       <p>
         <%= count %>. <%= definition.explanation %>
       </p>

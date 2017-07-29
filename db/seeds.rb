@@ -8,8 +8,6 @@
 
 User.create(handle: "me", email: "admin@thissite.com", password: "just2easy4you")
 
-User.create(handle: "mimi", email: "mblas7@yahoo.com", password: "quarterback")
-
 require_relative "languages"
 require_relative "alphabet"
 require_relative "set_letters"
@@ -20,7 +18,7 @@ json["results"]["collection1"].each do |obj|
   letter_id = set_letters(letters)
   new_word = Word.create(alphabet_id: letter_id , spelling: obj["word"]["text"].to_s, user_id: 1)
    if new_word.save
-     Definition.create(user_id: 1, word_id: new_word.id, explanation: obj["definition"])
-     Pronounciation.create(user_id: 1, word_id: new_word.id, phonetic: obj["pronounciation"])
+     Definition.create(user_id: 1, word_id: new_word.id, explanation: obj["definition"], verified: 1)
+     Pronunciation.create(user_id: 1, word_id: new_word.id, phonetic: obj["pronunciation"], verified: 1)
    end
 end

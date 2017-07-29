@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20151223190159) do
   enable_extension "plpgsql"
 
   create_table "alphabets", force: :cascade do |t|
-    t.string   "letter",         limit: 2
-    t.string   "pronounciation"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "letter",        limit: 2
+    t.string   "pronunciation"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20151223190159) do
     t.integer  "user_id",     default: 1
     t.integer  "word_id"
     t.text     "explanation"
+    t.integer  "verified",    default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
@@ -63,8 +64,9 @@ ActiveRecord::Schema.define(version: 20151223190159) do
     t.integer  "word_id"
     t.integer  "user_id"
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "verified",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20151223190159) do
     t.integer  "user_id",      default: 1
     t.text     "story"
     t.integer  "endorsements", default: 0
+    t.integer  "verified",     default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -89,17 +92,18 @@ ActiveRecord::Schema.define(version: 20151223190159) do
   add_index "origins", ["user_id"], name: "index_origins_on_user_id", using: :btree
   add_index "origins", ["word_id"], name: "index_origins_on_word_id", using: :btree
 
-  create_table "pronounciations", force: :cascade do |t|
+  create_table "pronunciations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "word_id"
     t.string   "phonetic"
     t.string   "vocal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "verified",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "pronounciations", ["user_id"], name: "index_pronounciations_on_user_id", using: :btree
-  add_index "pronounciations", ["word_id"], name: "index_pronounciations_on_word_id", using: :btree
+  add_index "pronunciations", ["user_id"], name: "index_pronunciations_on_user_id", using: :btree
+  add_index "pronunciations", ["word_id"], name: "index_pronunciations_on_word_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "handle"
@@ -130,8 +134,8 @@ ActiveRecord::Schema.define(version: 20151223190159) do
   add_foreign_key "images", "words"
   add_foreign_key "origins", "users"
   add_foreign_key "origins", "words"
-  add_foreign_key "pronounciations", "users"
-  add_foreign_key "pronounciations", "words"
+  add_foreign_key "pronunciations", "users"
+  add_foreign_key "pronunciations", "words"
   add_foreign_key "words", "alphabets"
   add_foreign_key "words", "users"
 end

@@ -1,7 +1,7 @@
 <div class="word-list">
 <% @words.each do |word| %>
   <strong class="word"><%= link_to word.spelling, word %></strong>
-  <% word.definitions.each do |definition| %>
+  <% word.definitions.where(verified: 1).each do |definition| %>
     <p>
       <%= definition.explanation %>
     </p>

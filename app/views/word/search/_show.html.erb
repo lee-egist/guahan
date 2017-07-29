@@ -17,7 +17,7 @@
     </strong>
   </p>
   <% count = 1 %>
-  <% result.definitions.order(created_at: 'asc').limit(3).each do |definition| %>
+  <% result.definitions.where(verified: 1).order(created_at: 'asc').limit(3).each do |definition| %>
     <p>
       <%= count %>. <%= definition.explanation %>
     </p>

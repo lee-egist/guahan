@@ -3,7 +3,7 @@ class WordsController < ApplicationController
   before_action :verify_user_session, except: [:show]
   def show
     @myword = Word.find(params[:id])
-    @definitions = @myword.definitions.order(created_at: :asc)
+    @definitions = @myword.definitions.where(verified: 1).order(created_at: :asc)
     @origins = @myword.origins
   end
 

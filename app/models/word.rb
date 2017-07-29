@@ -7,7 +7,7 @@ class Word < ActiveRecord::Base
   has_many :comments, through: :origins
 
   has_many :definitions, dependent: :destroy
-  has_many :pronounciations, dependent: :destroy
+  has_many :pronunciations, dependent: :destroy
   has_many :examples, dependent: :destroy
   has_many :images, dependent: :destroy
 

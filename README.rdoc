@@ -24,8 +24,8 @@ Things you may want to cover:
 
 == Known Issues
 
- - Pronounciation
-The + pronounciation link is NOT COMPLETE. any attempts to access it will crash the application **last updated: 7/12/17
+ - pronunciation
+The + pronunciation link is NOT COMPLETE. any attempts to access it will crash the application **last updated: 7/12/17
 
  - Report-a-Bug
 The Report-a-bug link is NOT COMPLETE. access this link redirects to the current page.
