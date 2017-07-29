@@ -3,7 +3,7 @@ class AdminController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :validate_session, :search_setup
+  before_action :validate_session, :search_setup, except: :show
 
   def search_setup
     @languages = Language.all

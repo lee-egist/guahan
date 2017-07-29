@@ -1,0 +1,9 @@
+<div>
+
+<h1><%= @myword.spelling %></h1>
+<%= form_for :pronounciation, url: {action: 'create'} do |f| %>
+  <%# render "shared/errors", object: @definition %>
+  <%= f.text_field :phonetic, class: "form-control" %>
+  <%= f.submit %>
+<% end %>
+</div>

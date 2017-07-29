@@ -1,6 +1,5 @@
 class WordsController < ApplicationController
 
-
   def show
     @myword = Word.find(params[:id])
     @definitions = @myword.definitions.order(created_at: :asc)
@@ -9,6 +8,6 @@ class WordsController < ApplicationController
 
   def new
   end
-  private
 
+  private
 end

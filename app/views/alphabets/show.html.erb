@@ -5,9 +5,7 @@
     <p>
       <strong class="word">
         <%= link_to word.spelling, word_path(word, page: params[:page]),hreflang: "en", rel: "help"   %>
-      </strong> - <% word.pronounciations.each do |pronounciation| %>
-      <%= pronounciation.phonetic %>
-      <% end %>
+      </strong> - <%= word.pronounciations.last.phonetic %>
     </p>
     <% count = 1 %>
     <% word.definitions.order(created_at: 'asc').limit(3).each do |definition| %>

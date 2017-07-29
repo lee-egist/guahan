@@ -3,9 +3,10 @@
   <div class="">
 
     <h1><%= @myword.spelling %></h1>
-      <strong> <% @myword.pronounciations.each do |pronunce| %>
-        <em style="pronounce"><%= pronunce.phonetic %></em>
-      <% end %>
+      <strong> <%# @myword.pronounciations.each do |pronunce| %>
+        <%# pronunce.phonetic %>
+        <em style="pronounce"><%= @myword.pronounciations.last.phonetic %></em>
+      <%# end %>
     </strong><br><br>
     <% o_count = g_count = 1 %>
     <strong>
@@ -41,8 +42,8 @@
       <strong>
         <a href="#definition" class="addlink">+ definition</a> |
         <a href="#image" class="addlink">+ image</a> |
-        <%= link_to "+ origin", new_word_origin_path(@myword), class: "addlink" %> |
-        <%= link_to "+ pronounciation", new_word_pronounciation_path(@myword), class: "addlink" %>
+        <a href="#origin" class="addlink">+ origin</a> |
+        <a href="#pronunciation" class="addlink">+ pronounciation</a>
       </strong>
     </p>
   </div>
@@ -70,11 +71,21 @@
   <div id="origin" class="modalDialog">
   	<div>
   		<a href="#close" title="Close" class="close">X</a>
-      <%= form_for :image, url: word_images_path(@myword) do |f| %>
+      <%= form_for :origin, url: new_word_origin_path(@myword) do |f| %>
         <%# render "shared/errors", object: :image %>
-        <%= f.file_field :image, class: "form-control" %>
+        <%= f.text_area :story, cols: 50, rows: 20, class: "form-control" %>
         <%= f.submit %>
       <% end %>
   	</div>
+  </div>
+  <div id="pronunciation" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <%= form_for :pronounciation, url: word_pronounciations_path(@myword) do |f| %>
+        <%# render "shared/errors", object: :image %>
+        <%= f.text_field :phonetic, class: "form-control" %>
+        <%= f.submit %>
+      <% end %>
+    </div>
   </div>
 </div>
