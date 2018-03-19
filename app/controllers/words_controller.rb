@@ -4,7 +4,7 @@ class WordsController < ApplicationController
   def show
     @myword = Word.find(params[:id])
     @definitions = @myword.definitions.where(verified: 1).order(created_at: :asc)
-    @origins = @myword.origins
+    @origins = @myword.origins..where(verified: 1)
   end
 
   def new
